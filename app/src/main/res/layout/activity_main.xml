@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+
+        TRAN KIM HOANG - 15110211 - Lop Sang Thu 4
+        email: sharingan.0100@gmail.com
+
+
+   <<Main Idea>>
+        ++<Calculate:   tip = amount_enter * tip_percent
+                        total = amount_enter + tip>
+        ++<Onchange:    tipSeekBar limits 0-30%
+                        tipLabelTextView shows the Seekbar's percent
+                        amount_enter in editTextView is transparent
+                        amountTextView shows amount_enter from editTextView
+                        tipTextView and totalTextView show the result(tip, total) while entering amount>
+
+   <<Timeline>>
+        ++< 1/3/2018: Design basic items in layout tree (gridlayout, seekbar
+                                                       6 text, 1 edittext)>
+
+        ++< 2/3/2018: Code      defines values,
+                                void calc,
+                                amountEditTextWatcher,
+                                seekbarListener>
+        ++< 3/3/2018: Edit layout   change the text_size of Textviews
+                                           the shape of amountTextView, tipTextView, totalTextView-->
+
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:columnCount="2"
+    android:paddingBottom="16dp"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="16dp"
+    android:rowCount="4"
+    android:useDefaultMargins="true"
+    tools:context="com.kirito.tipcalculator.MainActivity">
+
+    <TextView
+        android:id="@+id/amountTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_column="0"
+        android:layout_columnSpan="2"
+        android:layout_gravity="fill_horizontal"
+        android:layout_row="0"
+        android:background="@android:drawable/spinner_background"
+        android:hint="@string/enter_amount"
+        android:textSize="@dimen/text_size"/>
+
+    <EditText
+        android:id="@+id/amountEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_column="0"
+        android:layout_columnSpan="2"
+        android:layout_row="0"
+        android:background="@null"
+        android:digits="0123456789"
+        android:ems="10"
+        android:inputType="number"
+        android:textAllCaps="false"
+        android:textColor="@android:color/transparent"
+        android:textSize="@dimen/text_size" />
+
+    <TextView
+        android:id="@+id/percentLabelTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:autoText="false"
+        android:gravity="left"
+        android:hint="@string/tip_percentage"
+        android:textSize="@dimen/text_size" />
+
+    <SeekBar
+        android:id="@+id/percentSeekBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="fill_horizontal"
+        android:elevation="@dimen/elevation"
+        android:max="30"
+        android:progress="15"
+        android:scrollbarSize="20dp" />
+
+    <TextView
+        android:id="@+id/tipLabelTextView"
+        android:layout_width="74dp"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        android:hint="@string/tip"
+        android:text="Tip"
+        android:textSize="@dimen/text_size" />
+
+    <TextView
+        android:id="@+id/tipTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="fill_horizontal"
+        android:background="@drawable/textview_shape"
+        android:elevation="@dimen/elevation"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/text_size" />
+
+    <TextView
+        android:id="@+id/totalLabelTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        android:hint="@string/total"
+        android:text="Total"
+        android:textSize="@dimen/text_size" />
+
+    <TextView
+        android:id="@+id/totalTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="fill_horizontal"
+        android:layout_margin="5dp"
+        android:background="@drawable/textview_shape"
+        android:elevation="@dimen/elevation"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/text_size" />
+
+</GridLayout>
